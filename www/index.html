@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <h1 id='box'></h1>
+    <script src='/xuni/bundle.js'></script>
+    <script type='text/javascript'>
+        // var template = `
+        //   我买了一个{{thing.game}},好{{mood}}啊！
+        // `
+        var template = `
+        <ul>
+        {{#arr}}
+        <li>
+            <div class='hd'>{{name}}的信息</div>
+            <div class='bd'>
+                <p>姓名：{{name}}</p>    
+                <p>年龄：{{age}}</p> 
+                {{#hobbies}}   
+                <p>{{.}}</p>
+                {{/hobbies}}    
+            </div>
+        </li>
+        {{/arr}}
+      </ul>
+        `
+        // var data = {
+        //     thing:{game:'game'},
+        //     mood:'开心'
+        // }
+    var data = {
+       arr: [
+            { "name": "小一", "age": 11,hobbies:['吃饭','睡觉','敲代码'] },
+            { "name": "小二", "age": 12,hobbies:['吃饭','睡觉','打豆豆'] }
+        ]
+        }
+    var str =  TemplateEngine.render(template,data);
+    var box = document.getElementById("box") 
+    box.innerHTML =  str 
+    </script>
+</body>
+</html>
